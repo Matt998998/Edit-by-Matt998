@@ -129,7 +129,7 @@ var phrases = {
         "9": ["Status Dziewiąty", "Status Dziewiąty %UNIT%", "Status Dziewiąty %MISSION%"],
     },
     "nl-NL": {
-        "0": ["test test"],
+        "0": [""],
         "1": [""],
         "2": [""],
         "4": [""],
