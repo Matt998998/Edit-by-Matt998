@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Polske Dzwięki v1.0 Edit by Matt998
 // @namespace    https://www.operatorratunkowy.pl/
-// @version      v1.1
+// @version      1.1
 // @description  Polskie dzwięki, to dodatek do Operatora Ratunkowego, stworzony na podstawie niemieckiego skryptu "Chatter To Speech". Autorem skiryptu jest :LennardTFD. Edycja na polską wersję : Matt998
 // @author       LennardTFD, Edit :Matt998
 // @updateURL    https://github.com/Matt998998/Edit-by-Matt998/raw/master/Polske%20Dzwi%C4%99ki%20v1.0%20Edit%20by%20Matt998%20(1).user.js
