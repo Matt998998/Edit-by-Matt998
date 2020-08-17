@@ -122,7 +122,7 @@ var phrases = {
         "2": ["Status Drugi %UNIT%", "%UNIT% W Bazie!", "%UNIT% Gotowość na wezwanie, W Bazie!"],
         "3": ["Status Trzeci na ulicę: %ADDRESS%", "Status Trzeci do wezwania: %MISSION%", "W Drodze do wezwania: %MISSION%", "Status Trzeci na adres %ADDRESS%", "Wyjazd do wezwania: %MISSION%"],
         "4": ["Status Czwarty na ulicy: %ADDRESS%", "Status Czwarty na wezwaniu: %MISSION%", "%UNIT% Na miejscu!", "%UNIT% Jest na miejscu!"],
-        "5": ["%MISSION% potrzebna dyspozycja!", "%UNIT% Potrzebna interakcja!"],
+        "5": ["%UNIT% potrzebna dyspozycja!", "%UNIT% Potrzebna interakcja!"],
         "6": ["Wyłączenie z systemu %UNIT%"],
         "7": ["Status Siódmy", "Status Siódmy %UNIT%"],
         "8": ["Status Ósmy", "Status Ósmy %UNIT%", "Status Ósmy %MISSION%"],
@@ -375,4 +375,3 @@ mutationObserver.observe($("#radio_messages")[0], {
 mutationObserver.observe($("#radio_messages_important")[0], {
     childList: true
 });
-
