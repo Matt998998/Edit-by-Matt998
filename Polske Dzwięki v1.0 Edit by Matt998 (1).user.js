@@ -121,7 +121,7 @@ var phrases = {
         "1": ["%UNIT% Wraca do bazy!", "%UNIT% Powórót do bazy!", "%UNIT% Zakończył działania!"],
         "2": ["Status Drugi %UNIT%", "%UNIT% W Bazie!", "%UNIT% Gotowość na wezwanie, W Bazie!"],
         "3": ["Status Trzeci na ulicę: %ADDRESS%", "Status Trzeci do wezwania: %MISSION%", "W Drodze do wezwania: %MISSION%", "Status Trzeci na adres %ADDRESS%"],
-        "4": ["Status Czwarty na ulicy: %ADDRESS%", "Status Czwarty na wezwaniu: %MISSION%", "%UNIT% Na miejscu!"],
+        "4": ["Status Czwarty na ulicy: %ADDRESS%", "Status Czwarty na wezwaniu: %MISSION%", "%UNIT% Na miejscu!", "%UNIT% Jest na miejscu!"],
         "5": ["Status Piąty", "%UNIT% Potrzebna interakcja!"],
         "6": ["Wyłączenie z systemu %UNIT%"],
         "7": ["Status Siódmy", "Status Siódmy %UNIT%"],
