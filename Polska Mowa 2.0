@@ -1,0 +1,42 @@
+// ==UserScript==
+// @name         Polska Mowa 2.0
+// @version      1.0.2
+// @description  Polskie dzwięki.
+// @author       Jan (jxn_30) modded by Crazycake / Wersja Polska by : Matt998
+// @include      *://www.operatorratunkowy.pl/*
+// @include      *://www.operatorratunkowy.pl/missions/\d+//*
+// @include      https://www.operatorratunkowy.pl/missions/\d+/
+// @grant        none
+// ==/UserScript==
+
+(function() {
+    'use strict';
+
+    const useVehicleType = true;
+    const playGong = false;
+    const gongUrl = '';
+    const renamedVariables = [
+        ["-", " "], ["KSRG", " "], ["PC", " "], ["WRD", "Radiowóz Wydziału Ruchu Drogowego"], ["KMP", "Komenda Miejska Policji"], ["KPP", "Komenda Powiatowa Policji"], ["KP PSP", " "], ["FuStW", "Funkstreife"], ["2/16", "Dwa Na szesnaście"], ["GBARt", "Gaśniczy"], ["LPR", "Śmigłowiec Lotniczego Pogotowia Ratunkowego"], ["MAN", "M A N"], ["GBM", "Gaśniczy"], ["POLICJA", "Radiowóz Ogniwa Patrolowo-Interwencyjnego"], [",", " -  oraz -  "], ["MB", "Mercedes benz"], ["RT", ""], ["25", "25"], ["/", "Na"], ["(S)", "Specjalistyczna"], ["(P)", "Podstawowa"], ["VW", "volkswagen"], ["AMZ", "A M Z"], ["WAS", ""], ["Y", "Igrek"], ["GLM", "Lekki Gaśniczy"], ["Spec. ", "Specjalistyczne"], ["26", "dwadzieścia sześć"], ["Św.", "świętego "], ["SD", "Drabina"], ["SHD", "Podnośnik Hydrauliczny"], ["SH", "Podnośnik Hydrauliczny"], ["SLOp", "Samochód Operacyjny"], ["GBA", "Gaśniczy"], ["GCBA", "Ciężki gaśniczy"], ["GLBM", "Lekki Gaśniczy"], ["SLRt", "Techniczny"], ["SLRt (RT)", "Techniczny"], ["SRt", "Techniczny"], ["SCZ", "Cysterna"], ["GCBM", "Cysterna"], ["SPGaz", "Samochód ze sprzętem ochrony dróg oddechowych"], ["RChem", "Chemiczny"], ["SRd", "Ratownictwo drogowe"], ["SLRd", "Ratownictwo drogowe"], ["SLRr", "Rozpoznawczo Ratunkowy"], ["GCBA", "Ciężki gaśniczy"], ["WDR", "Wydział Ruchu Drogowego"], ["T 4", "Te Cztery"], ["SHD-25", "S H D Dwadzieścia Pięć"], ["SD-30", "S D Trzydzieści"], ["SD-53", "S D Piędziesiąt Trzy"], ["244", "Dwa cztery cztery"], ["Star 266", "Star Dwa Sześć sześć"], ["422", "Cztery dwa dwa"], ["TGE", "T G E"], ["SLwys", "Ratownictwo Wysokościowe"],
+    ];    
+
+    const alarmBtns = document.getElementById('mission_alarm_btn').parentElement.children;
+    Array.from(alarmBtns).forEach(btn => btn.addEventListener('click', () => {
+        const vehicles = Array.from(document.querySelectorAll('#vehicle_show_table_body_all .vehicle_select_table_tr')).filter(r => r.querySelector('.vehicle_checkbox:checked'));
+        const buildings = {};
+        vehicles.forEach(vehicle => {
+            const building = vehicle.querySelector('a[href^="/buildings/"]');
+            if (!building) return;
+            const buildingCaption = building.textContent.trim();
+            const buildingId = building.href.match(/\d+$/)[0];
+            if (!buildings.hasOwnProperty(buildingId)) buildings[buildingId] = {caption: buildingCaption, vehicles: []};
+            //buildings[buildingId].vehicles.push(vehicle.querySelector('.mission_vehicle_label').textContent.trim());
+            buildings[buildingId].vehicles.push(useVehicleType ? vehicle.getAttribute('vehicle_type') : vehicle.querySelector('.mission_vehicle_label').textContent.trim());
+        });
+        let speech = 'ALARM!!! : ' + Object.values(buildings).map(b => `Jednostka :  ${b.caption}: Typ pojazdu :- ${b.vehicles}!`).join(' ') + 'Według zgłaszającego: ' + document.getElementById('missionH1').textContent.trim();
+        for(var i = 0; i < renamedVariables.length; i++)
+    {
+         speech = speech.replaceAll(renamedVariables[i][0], renamedVariables[i][1]);
+    }
+        tellParent(`const alarmt2s = new SpeechSynthesisUtterance();alarmt2s.text = ${JSON.stringify(speech)};alarmt2s.lang = speechSynthesis.getVoices().find(voice => voice.lang === 'pl');alarmt2s.rate = 1;${playGong ? `const gong = new Audio('${gongUrl}');gong.addEventListener('ended', () => ` : ''}speechSynthesis.speak(alarmt2s)${playGong ? `);gong.play();` : ''}`);
+    }));
+})();
